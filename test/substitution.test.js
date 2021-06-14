@@ -2,8 +2,8 @@ const { substitution } = require('../src/substitution'),
     expect = require('chai').expect
 
 describe('substitution', () => {
-    it('should return new chracters substituted from the provide array', () => {
-        const input = 'thinkful',
+    it('correctly translates the given phrase, based on the alphabet given to the function, ignoring capital letters', () => {
+        const input = 'thinKful',
             array = 'xoyqmcgrukswaflnthdjpzibev',
             expected = 'jrufscpw',
             actual = substitution(input, array)
@@ -18,7 +18,7 @@ describe('substitution', () => {
 
         expect(actual).to.equal(expected)
     })
-    it('if characters are not unique, return false', () => {
+    it('returns false if there are any duplicate characters in the given alphabet', () => {
         const input = 'thinkful',
             array = 'abcabcabcabcabcabcabcabcyz',
             expected = false,

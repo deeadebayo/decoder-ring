@@ -8,7 +8,7 @@ const polybiusModule = (function () {
         codeKey = yPolySquare.map((textBlock) => [...textBlock])
 
     function polybius(input, encode = true) {
-        const inputArray = [...input]
+        const inputArray = [...input.toLowerCase()]
         if (!encode) {
             if (inputArray.filter((arr) => !arr.includes(' ')).length % 2 !== 0)
                 return false
