@@ -4,26 +4,26 @@
 // of the anonymous function on line 6
 
 const caesarModule = (function () {
-	const alphabet = 'abcdefghijklmnopqrstuvwxyz'.split('')
-	function caesar(input, shift, encode = true) {
-		if (!shift || shift > 25 || shift < -25) return false
-		if (!encode) shift *= -1
+    const alphabet = 'abcdefghijklmnopqrstuvwxyz'.split('')
+    function caesar(input, shift, encode = true) {
+        if (!shift || shift > 25 || shift < -25) return false
+        if (!encode) shift *= -1
 
-		input = input.toLowerCase()
-		return [...input]
-			.map((letter) => {
-				if (!/[a-z]/.test(letter)) return letter
-				let position = alphabet.indexOf(letter) + shift
-				if (position > 25) position -= 26
-				if (position < 0) position += 26
-				return alphabet[position]
-			})
-			.join('')
-	}
+        input = input.toLowerCase()
+        return [...input]
+            .map((letter) => {
+                if (!/[a-z]/.test(letter)) return letter
+                let position = alphabet.indexOf(letter) + shift
+                if (position > 25) position -= 26
+                if (position < 0) position += 26
+                return alphabet[position]
+            })
+            .join('')
+    }
 
-	return {
-		caesar,
-	}
+    return {
+        caesar,
+    }
 })()
 
 module.exports = { caesar: caesarModule.caesar }
