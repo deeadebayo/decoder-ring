@@ -4,27 +4,26 @@
 // of the anonymous function on line 6
 
 const caesarModule = (function () {
-  function caesar(input, shift, encode = true) {
-    const alphabets = 'abcdefghijklmnopqrstuvwxyz'.split('')
-    if (!shift || shift > 25 || shift < -25) return false
-    input = input.toLowerCase()
-    if(encode) {
-      return [...input].map(letter =>  /[a-z]/.test(letter) 
-        // ? alphabets[(alphabets.indexOf(letter) + shift + ((shift % alphabets.length) - 1))]
-        ? alphabets[(alphabets.indexOf(letter) + shift)]
-        : letter
-      ).join('')
-    } else {
-      return [...input].map(letter =>  /[a-z]/.test(letter) 
-        ? alphabets[(alphabets.indexOf(letter) - shift) % alphabets.length]
-        : letter
-      ).join('')
-    }
-  }
+	const alphabet = 'abcdefghijklmnopqrstuvwxyz'.split('')
+	function caesar(input, shift, encode = true) {
+		if (!shift || shift > 25 || shift < -25) return false
+		if (!encode) shift *= -1
 
-  return {
-    caesar,
-  };
-})();
+		input = input.toLowerCase()
+		return [...input]
+			.map((letter) => {
+				if (!/[a-z]/.test(letter)) return letter
+				let position = alphabet.indexOf(letter) + shift
+				if (position > 25) position -= 26
+				if (position < 0) position += 26
+				return alphabet[position]
+			})
+			.join('')
+	}
 
-module.exports = { caesar: caesarModule.caesar };
+	return {
+		caesar,
+	}
+})()
+
+module.exports = { caesar: caesarModule.caesar }

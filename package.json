@@ -9,6 +9,7 @@
     "docker:test": "docker run -t  thinkful-ed/zid-pf-project-decoder-ring-01-qualified npm test",
     "start": "live-server",
     "start:solution": "npm run -it docker:build && npm run docker:run",
+    "format": "npx prettier --write .",
     "test": "mocha test",
     "test:solution": "npm run docker:build && npm run docker:test"
   },
@@ -18,6 +19,7 @@
   "devDependencies": {
     "chai": "^4.3.4",
     "live-server": "^1.2.1",
-    "mocha": "^8.4.0"
+    "mocha": "^8.4.0",
+    "prettier": "2.3.1"
   }
 }
